@@ -99,5 +99,36 @@ public class One {
      * 您可以假设除了数字 0 之外，这两个数都不会以 0 开头。
      *
      */
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0);
+        //类似指针，用于指示结果的位置
+        ListNode t = res;
+        int temp = 0;
+        while (l1 != null || l2 != null) {
+            int v1 = l1 != null ? l1.val : 0;
+            int v2 = l2 != null ? l2.val : 0;
+            int sum = v1 + v2 + temp;
+            temp = sum / 10;
+            t.next = new ListNode(sum % 10);
+            t = t.next;
 
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        if (temp > 0)
+            t.next = new ListNode(temp);
+        return res.next;
+    }
+
+    /**
+     *给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+     */
+    public int lengthOfLongestSubstring(String s) {
+        int res = 0;
+        return res;
+    }
 }
